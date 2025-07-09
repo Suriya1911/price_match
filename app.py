@@ -17,8 +17,8 @@ from plotly.subplots import make_subplots
 load_dotenv()
 
 st.set_page_config(
-    page_title="MatchIt - Smart Price Comparison",
-    page_icon="📈",
+    page_title="Cartiously - Price Matching Done Right",
+    page_icon="🛒",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -115,7 +115,7 @@ h1 {
 
 /* Enhanced Analytics Cards with Different Neon Colors */
 .analytics-card, .step-card, .deal-card {
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0);
     border: 2px solid rgba(255, 0, 150, 0.4);
     border-radius: 20px;
     padding: 1.5rem;
@@ -137,20 +137,17 @@ h1 {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, 
-        rgba(255, 0, 150, 0.6),
-        rgba(0, 255, 200, 0.6),
-        rgba(150, 0, 255, 0.6),
-        rgba(255, 100, 0, 0.6));
+    background: linear-gradient( 
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0));
     border-radius: 20px;
     z-index: -1;
     animation: borderRotate 4s linear infinite;
 }
 
-@keyframes borderRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+
 
 @keyframes cardPulse {
     0% {
@@ -173,11 +170,19 @@ h1 {
 }
 
 /* Custom Button Styles */
+.stButton {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 2rem 0 !important;
+    padding: 1rem 0 !important;
+}
+
 .stButton > button {
     background: linear-gradient(135deg, 
-        rgba(255, 0, 150, 0.8) 0%,
-        rgba(150, 0, 255, 0.8) 50%,
-        rgba(0, 255, 200, 0.8) 100%) !important;
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 100%) !important;
     color: #ffffff !important;
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
@@ -198,39 +203,43 @@ h1 {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
-    left: -100% !important;
+    left: -200% !important;
     width: 100% !important;
     height: 100% !important;
     background: linear-gradient(90deg, 
         transparent,
-        rgba(255, 255, 255, 0.3),
+        rgba(0, 0, 0, 0),
         transparent) !important;
     transition: left 0.5s !important;
 }
-
-.stButton > button:hover::before {
-    left: 100% !important;
+            
+ .stButton > button:hover::after {
+    width: 300px !important;
+    height: 300px !important;
 }
 
 .stButton > button:hover {
-    transform: translateY(-3px) scale(1.05) !important;
+    transform: translateY(-5px) scale(1.03) !important;
     box-shadow: 
-        0 0 30px rgba(255, 0, 150, 0.6),
-        0 0 40px rgba(150, 0, 255, 0.4),
-        inset 0 0 30px rgba(255, 255, 255, 0.15) !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.stButton > button:active {
-    transform: translateY(-1px) scale(1.02) !important;
-}
+        0 0 35px rgba(0, 255, 200, 0.6),
+        0 0 45px rgba(0, 150, 255, 0.4),
+        inset 0 0 35px rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(0, 255, 200, 0.8) !important;
+}           
 
 /* Download Button Specific Styles */
+.stDownloadButton {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 2rem 0 !important;
+}
+
 .stDownloadButton > button {
     background: linear-gradient(135deg, 
-        rgba(0, 255, 200, 0.9) 0%,
-        rgba(0, 150, 255, 0.9) 50%,
-        rgba(100, 0, 255, 0.9) 100%) !important;
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 100%) !important;
     color: #ffffff !important;
     border: 2px solid rgba(0, 255, 200, 0.5) !important;
     border-radius: 20px !important;
@@ -769,7 +778,7 @@ def create_excel_file(excel_data):
 # Main App Header
 st.markdown("""
 <div style='text-align: center; margin: 2rem 0;'>
-    <h1 style='font-size: 3rem; margin-bottom: 0.5rem;'>MatchIt</h1>
+    <h1 style='font-size: 3rem; margin-bottom: 0.5rem;'>Cartiously</h1>
     <div style='color: #a0a0a0; font-size: 1.1rem;'>
         Intelligent Price Matching and Comparison Platform
     </div>
@@ -782,7 +791,7 @@ col1, col2, col3 = st.columns(3, gap="medium")
 with col1:
     st.markdown("""
     <div class='step-card'>
-        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>Import Data</div>
+        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>Drop Your Flyers</div>
         <div style='color: #cccccc; font-size: 0.9rem;'>Upload retail flyers and promotional materials</div>
     </div>
     """, unsafe_allow_html=True)
@@ -790,7 +799,7 @@ with col1:
 with col2:
     st.markdown("""
     <div class='step-card'>
-        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>AI Processing</div>
+        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>We Do the Heavy Lifting</div>
         <div style='color: #cccccc; font-size: 0.9rem;'>Extract pricing data with machine learning</div>
     </div>
     """, unsafe_allow_html=True)
@@ -798,7 +807,7 @@ with col2:
 with col3:
     st.markdown("""
     <div class='step-card'>
-        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>Price Intelligence</div>
+        <div style='color: #ffffff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;'>Get Market Edge</div>
         <div style='color: #cccccc; font-size: 0.9rem;'>Generate market insights and recommendations</div>
     </div>
     """, unsafe_allow_html=True)
@@ -968,10 +977,11 @@ if uploaded_files:
                 st.session_state.products_data = products_data
                 st.session_state.all_flyer_data = all_flyer_data  # Store complete flyer data for Excel
                 
-                st.success(f"Analysis complete! Found {len(products_data)} products from {len(all_flyer_data)} flyers.")
+            
+                st.markdown(f'<div style="background-color: 0; color: 1; padding: 0.75rem 1.25rem; border-radius: 0.375rem; border: 0.90px solid #c3e6cb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> Found {len(products_data)} products from {len(all_flyer_data)} flyers.</div>',
+                unsafe_allow_html=True)
             else:
                 st.error("No successful analyses found.")
-
 # EXCEL PREVIEW AND DOWNLOAD SECTION (NEW)
 if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
     st.markdown("---")
@@ -980,8 +990,8 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
     excel_data = create_excel_data(st.session_state.all_flyer_data)
     
     st.markdown("""
-    <div class='excel-preview-section'>
-        <h2 style='text-align: center; color: #ffffff; margin-bottom: 2rem;'>📊 Excel Data Preview</h2>
+    <div class='excel-preview-section' style='padding: 1rem; margin: 1rem auto; max-width: 500px;'>
+        <h3 style='text-align: center; color: 0; margin-bottom: 1rem; font-size: 1.5rem;'>Excel Data Preview</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -997,16 +1007,28 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
         """, unsafe_allow_html=True)
         
         if not excel_data['stores'].empty:
-            st.dataframe(excel_data['stores'], use_container_width=True, height=400)
+            # Clean the dataframe - remove empty rows
+            stores_df = excel_data['stores'].dropna(how='all').reset_index(drop=True)
+            stores_df.index = range(1, len(stores_df) + 1)
+            # Calculate dynamic height based on number of rows
+            row_height = 35  # approximate height per row
+            header_height = 40
+            min_height = 200
+            max_height = 600
+            calculated_height = min(max(len(stores_df) * row_height + header_height, min_height), max_height)
             
+            st.dataframe(stores_df, use_container_width=True, height=calculated_height)
+            
+            
+
             # Store statistics
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("Total Stores", len(excel_data['stores']))
-            with col2:
-                st.metric("Stores with Address", len(excel_data['stores'][excel_data['stores']['Address'] != '']))
+            col1, col2, col3 , col4, col5,col6 = st.columns([1,1,2,2,2,1])
             with col3:
-                st.metric("Stores with Website", len(excel_data['stores'][excel_data['stores']['Website'] != '']))
+                st.metric("Total Stores", len(stores_df))
+            with col4:
+                st.metric("Stores with Address", len(stores_df[stores_df['Address'] != '']))
+            with col5:
+                st.metric("Stores with Website", len(stores_df[stores_df['Website'] != '']))
         else:
             st.warning("No store data available")
     
@@ -1019,21 +1041,31 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
         """, unsafe_allow_html=True)
         
         if not excel_data['products'].empty:
-            # Display products dataframe
-            st.dataframe(excel_data['products'], use_container_width=True, height=400)
+            # Clean the dataframe - remove empty rows
+            products_df = excel_data['products'].dropna(how='all').reset_index(drop=True)
+            
+            products_df.index = range(1, len(products_df) + 1)
+            # Calculate dynamic height
+            row_height = 35
+            header_height = 40
+            min_height = 200
+            max_height = 600
+            calculated_height = min(max(len(products_df) * row_height + header_height, min_height), max_height)
+            
+            st.dataframe(products_df, use_container_width=True, height=calculated_height)
             
             # Product statistics
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Total Products", len(excel_data['products']))
+            col1, col2, col3 , col4, col5,col6 = st.columns([1,2,2,2,2,1])
             with col2:
-                products_with_prices = len(excel_data['products'][excel_data['products']['Price_Numeric'] > 0])
-                st.metric("Products with Prices", products_with_prices)
+                st.metric("Total Products", len(products_df))
             with col3:
-                avg_price = excel_data['products'][excel_data['products']['Price_Numeric'] > 0]['Price_Numeric'].mean()
-                st.metric("Average Price", f"${avg_price:.2f}" if avg_price else "N/A")
+                products_with_prices = len(products_df[products_df['Price_Numeric'] > 0])
+                st.metric("Products with Prices", products_with_prices)
             with col4:
-                unique_stores = excel_data['products']['Store_Name'].nunique()
+                avg_price = products_df[products_df['Price_Numeric'] > 0]['Price_Numeric'].mean()
+                st.metric("Average Price", f"${avg_price:.2f}" if avg_price else "N/A")
+            with col5:
+                unique_stores = products_df['Store_Name'].nunique()
                 st.metric("Unique Stores", unique_stores)
         else:
             st.warning("No product data available")
@@ -1047,18 +1079,28 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
         """, unsafe_allow_html=True)
         
         if not excel_data['comparisons'].empty:
-            st.dataframe(excel_data['comparisons'], use_container_width=True, height=400)
+            # Clean the dataframe - remove empty rows
+            comparisons_df = excel_data['comparisons'].dropna(how='all').reset_index(drop=True)
+            comparisons_df.index = range(1, len(comparisons_df) + 1)
+            # Calculate dynamic height
+            row_height = 35
+            header_height = 40
+            min_height = 200
+            max_height = 600
+            calculated_height = min(max(len(comparisons_df) * row_height + header_height, min_height), max_height)
+            
+            st.dataframe(comparisons_df, use_container_width=True, height=calculated_height)
             
             # Comparison statistics
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("Comparable Products", len(excel_data['comparisons']))
-            with col2:
-                product_groups = excel_data['comparisons']['Product_Group'].nunique()
-                st.metric("Product Categories", product_groups)
+            col1, col2, col3 , col4, col5,col6 = st.columns([1,1,2,2,2,1])
             with col3:
-                if len(excel_data['comparisons']) > 0:
-                    avg_savings = excel_data['comparisons'].groupby('Product_Group')['Price'].apply(lambda x: x.max() - x.min()).mean()
+                st.metric("Comparable Products", len(comparisons_df))
+            with col4:
+                product_groups = comparisons_df['Product_Group'].nunique()
+                st.metric("Product Categories", product_groups)
+            with col5:
+                if len(comparisons_df) > 0:
+                    avg_savings = comparisons_df.groupby('Product_Group')['Price'].apply(lambda x: x.max() - x.min()).mean()
                     st.metric("Avg Potential Savings", f"${avg_savings:.2f}" if avg_savings else "N/A")
         else:
             st.info("No comparable products found across multiple stores")
@@ -1067,7 +1109,7 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
     st.markdown("---")
     st.markdown("""
     <div style='text-align: center; margin: 2rem 0;'>
-        <h3 style='color: #ffffff; margin-bottom: 1rem;'>📥 Download Complete Analysis</h3>
+        <h3 style='color: #ffffff; margin-bottom: 1rem;'>Download Complete Analysis</h3>
         <p style='color: #cccccc; margin-bottom: 2rem;'>Get your complete price analysis in Excel format with all stores, products, and comparisons</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1081,11 +1123,11 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
         # Generate filename with timestamp
         from datetime import datetime
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"MatchIt_Price_Analysis_{timestamp}.xlsx"
+        filename = f"Cartiously_Price_Analysis_{timestamp}.xlsx"
         
         # Download button
         st.download_button(
-            label="📊 DOWNLOAD EXCEL REPORT",
+            label="DOWNLOAD EXCEL REPORT",
             data=excel_file,
             file_name=filename,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -1095,7 +1137,9 @@ if 'all_flyer_data' in st.session_state and st.session_state.all_flyer_data:
         # File info
         st.caption(f"File: {filename} • Contains 3 sheets: Stores, Products, Price Comparisons")
 
+
 # PERSISTENT PRODUCT SEARCH (Outside analysis block)
+
 if 'products_data' in st.session_state and st.session_state.products_data:
     st.markdown("---")
     st.subheader("Quick Product Search")
@@ -1103,19 +1147,20 @@ if 'products_data' in st.session_state and st.session_state.products_data:
     
     products_data = st.session_state.products_data
     
-    # Search interface
-    col_search, col_button = st.columns([4, 1])
-    
-    with col_search:
-        search_product = st.text_input(
-            "Product Search",
-            placeholder="Search for products (e.g., milk, bread, eggs)",
-            key="persistent_search",
-            label_visibility="collapsed"
-        )
-    
-    with col_button:
-        search_clicked = st.button("Search", type="secondary")
+    # Search interface using form for better alignment
+    with st.form("search_form", clear_on_submit=False):
+        col_search, col_button = st.columns([7, 1])
+        
+        with col_search:
+            search_product = st.text_input(
+                "Product Search",
+                placeholder="Search for products (e.g., milk, bread, eggs)",
+                key="search_input",
+                label_visibility="collapsed"
+            )
+        
+        with col_button:
+            search_clicked = st.form_submit_button("SEARCH", use_container_width=True)
     
     # Available products reference
     all_product_names = list(set([p['Product_Name'].lower() for p in products_data]))[:12]
@@ -1209,30 +1254,33 @@ if 'products_data' in st.session_state and st.session_state.products_data:
                         expensive_item = max(chart_data_single, key=lambda x: x['Price_Numeric'])
                         savings_amount = expensive_item['Price_Numeric'] - cheapest_item['Price_Numeric']
                         
-                        # Deal cards
-                        st.markdown(f"""
-                        <div style='display: flex; gap: 1rem; margin: 1.5rem 0;'>
-                            <div class='deal-card best'>
-                                <div style='color: #00ff88; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>BEST DEAL</div>
-                                <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>{cheapest_item['Store_Name']}</div>
-                                <div style='color: #00ff88; font-size: 1.8rem; font-weight: 800;'>${cheapest_item['Price_Numeric']:.2f}</div>
-                            </div>
-                            <div class='deal-card highest'>
-                                <div style='color: #ff6464; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>HIGHEST PRICE</div>
-                                <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>{expensive_item['Store_Name']}</div>
-                                <div style='color: #ff6464; font-size: 1.8rem; font-weight: 800;'>${expensive_item['Price_Numeric']:.2f}</div>
-                            </div>
-                            <div class='deal-card savings'>
-                                <div style='color: #00c8ff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>YOU SAVE</div>
-                                <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>Choose Best Deal</div>
-                                <div style='color: #00c8ff; font-size: 1.8rem; font-weight: 800;'>${savings_amount:.2f}</div>
-                            </div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                
+                       
+                        # Deal cards - centered on page
+                    st.markdown(f"""
+<div style='width: 100%; display: flex; justify-content: center;'>
+    <div style='display: flex; gap: 1rem; margin: 1.5rem 0;'>
+        <div class='deal-card best'>
+            <div style='color: #00ff88; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>BEST DEAL</div>
+            <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>{cheapest_item['Store_Name']}</div>
+            <div style='color: #00ff88; font-size: 1.8rem; font-weight: 800;'>${cheapest_item['Price_Numeric']:.2f}</div>
+        </div>
+        <div class='deal-card highest'>
+            <div style='color: #ff6464; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>HIGHEST PRICE</div>
+            <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>{expensive_item['Store_Name']}</div>
+            <div style='color: #ff6464; font-size: 1.8rem; font-weight: 800;'>${expensive_item['Price_Numeric']:.2f}</div>
+        </div>
+        <div class='deal-card savings'>
+            <div style='color: #00c8ff; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;'>YOU SAVE</div>
+            <div style='color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;'>Choose Best Deal</div>
+            <div style='color: #00c8ff; font-size: 1.8rem; font-weight: 800;'>${savings_amount:.2f}</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)                
                 # Results table for this specific search term
                 st.markdown(f"#### All {search_term.title()} Results")
                 results_df_single = pd.DataFrame(single_term_results)
+                results_df_single.index = range(1, len(results_df_single) + 1)
                 st.dataframe(
                     results_df_single[['Product_Name', 'Store_Name', 'Price_Text', 'Size_Weight']], 
                     use_container_width=True,
